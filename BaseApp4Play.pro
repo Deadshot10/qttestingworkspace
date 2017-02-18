@@ -28,11 +28,9 @@ LIBS += libopengl32
 
 SOURCES += main.cpp\
         widget.cpp \
-    scene.cpp \
     model.cpp
 
 HEADERS  += widget.h \
-    scene.h \
     model.h
 
 CONFIG += mobility
