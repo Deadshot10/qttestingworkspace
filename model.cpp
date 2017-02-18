@@ -8,9 +8,9 @@ Model::Model(QOpenGLContext* context, const std::vector<GLfloat> &vertexPosition
     initializeOpenGLFunctions();
 
     m_vertShader = new QOpenGLShader(QOpenGLShader::Vertex, context);
-    m_vertShader->compileSourceFile(":\\simple_vertex.vert");
+    m_vertShader->compileSourceFile(":\\data\\simple_vertex.vert");
     m_fragShader = new QOpenGLShader(QOpenGLShader::Fragment, context);
-    m_fragShader->compileSourceFile(":\\simple_fragment.frag");
+    m_fragShader->compileSourceFile(":\\data\\simple_fragment.frag");
     m_shaderProg = new QOpenGLShaderProgram(context);
     m_shaderProg->addShader(m_vertShader);
     m_shaderProg->addShader(m_fragShader);

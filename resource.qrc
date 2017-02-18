@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>simple_vertex.vert</file>
-        <file>simple_fragment.frag</file>
+        <file>data/grass.png</file>
+        <file>data/simple_fragment.frag</file>
+        <file>data/simple_vertex.vert</file>
     </qresource>
 </RCC>
