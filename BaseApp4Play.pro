@@ -36,3 +36,6 @@ HEADERS  += widget.h \
 CONFIG += mobility
 MOBILITY = 
 
+RESOURCES += \
+    resource.qrc
+

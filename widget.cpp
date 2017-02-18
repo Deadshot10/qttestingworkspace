@@ -35,10 +35,12 @@ void Widget::paintGL()
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     Model  m_model = Model(context(), {0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5});
-    m_model.bind();
+    m_model.bindShaderProg();
+    m_model.bindVertexArray();
     glDrawArrays(GL_TRIANGLES, 0, 6);
     //glDrawElements(GL_TRIANGLES, 6, GL_FLOAT, 0);
-    m_model.unbind();
+    m_model.unbindVertexArray();
+    m_model.unbindShaderProg();
 }
 
 void Widget::mousePressEvent(QMouseEvent *e)

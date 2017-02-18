@@ -34,6 +34,7 @@ protected:
     //QPoint releasePosition;
     GLfloat currentWidth;
     GLfloat currentHeight;
+
 };
 
 #endif // WIDGET_H
