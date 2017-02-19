@@ -6,16 +6,21 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLShader>
 #include <QOpenGLShaderProgram>
+#include <QOpenGLTexture>
 
 class Model : protected QOpenGLFunctions
 {
 public:
-    Model(QOpenGLContext* context, const std::vector<GLfloat>& vertexPositions);
+    Model(QOpenGLContext* context,
+          const std::vector<GLfloat>& vertexPositions,
+          const std::vector<GLfloat>& texturePositions);
     ~Model();
     void bindVertexArray();
     void unbindVertexArray();
     void bindShaderProg();
     void unbindShaderProg();
+    void bindTexture();
+    void unbindTexture();
 private:
     void addVBO(int dim, const std::vector<GLfloat>& data);
     GLuint m_vboCount = 0;
@@ -24,6 +29,7 @@ private:
     QOpenGLShader* m_vertShader;
     QOpenGLShader* m_fragShader;
     QOpenGLShaderProgram* m_shaderProg;
+    QOpenGLTexture *m_texture;
 
 };
 
