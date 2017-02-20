@@ -4,9 +4,11 @@
 
 Model::Model(QOpenGLContext* context,
              const std::vector<GLfloat> &vertexPositions,
-             const std::vector<GLfloat> &texturePositions)
+             const std::vector<GLfloat> &texturePositions,
+             const std::vector<GLuint>& indices)
     :
-    QOpenGLFunctions(context)
+    QOpenGLFunctions(context),
+    m_indicesCount(indices.size())
 {
     initializeOpenGLFunctions();
 
@@ -32,6 +34,7 @@ Model::Model(QOpenGLContext* context,
     m_vao->bind();
     addVBO(2, vertexPositions);
     addVBO(2, texturePositions);
+    addEBO(indices);
     m_vao->release();
 
 
@@ -77,6 +80,11 @@ void Model::unbindTexture()
     m_texture->release();
 }
 
+GLuint Model::getIndicesCount() const
+{
+    return m_indicesCount;
+}
+
 void Model::addVBO(int dim, const std::vector<GLfloat> &data)
 {
     QOpenGLBuffer m_vbo(QOpenGLBuffer::VertexBuffer);
@@ -86,7 +94,15 @@ void Model::addVBO(int dim, const std::vector<GLfloat> &data)
     glVertexAttribPointer(m_vboCount, dim, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
     glEnableVertexAttribArray(m_vboCount++);
     m_buffers.push_back(m_vbo);
-    m_vbo.release();
 
+}
+
+void Model::addEBO(const std::vector<GLuint> &indices)
+{
+     QOpenGLBuffer m_ebo(QOpenGLBuffer::IndexBuffer);
+     m_ebo.create();
+     m_ebo.bind();
+     m_ebo.allocate(indices.data(), indices.size() * sizeof(indices[0]));
+     m_buffers.push_back(m_ebo);
 }
 
