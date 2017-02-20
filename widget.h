@@ -6,6 +6,10 @@
 #include <QMouseEvent>
 #include <QDebug>
 #include <QGuiApplication> //for keyboard modifers
+#include <QDateTime>
+#include <QBasicTimer>
+#include <QElapsedTimer>
+#include <QPainter>
 
 #include "model.h"
 
@@ -30,6 +34,12 @@ protected:
     void resizeGL(int w, int h) override;
     void paintGL() override;
 
+    void showFPS();
+    qint64 checkTime;
+    int frames;
+    int framesDisplayed;
+    QBasicTimer timer;
+    QElapsedTimer timerE;
     //QPoint pressPosition;
     //QPoint releasePosition;
     GLfloat currentWidth;

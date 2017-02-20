@@ -8,6 +8,7 @@
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
 
+
 class Model : protected QOpenGLFunctions
 {
 public:
@@ -23,6 +24,7 @@ public:
     void bindTexture();
     void unbindTexture();
     GLuint getIndicesCount() const;
+    void setTime(float time);
 private:
     void addVBO(int dim, const std::vector<GLfloat>& data);
     void addEBO(const std::vector<GLuint> &indices);

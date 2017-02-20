@@ -85,6 +85,11 @@ GLuint Model::getIndicesCount() const
     return m_indicesCount;
 }
 
+void Model::setTime(float time)
+{
+    glUniform1f(glGetUniformLocation(m_shaderProg->programId(), "time"), time);
+}
+
 void Model::addVBO(int dim, const std::vector<GLfloat> &data)
 {
     QOpenGLBuffer m_vbo(QOpenGLBuffer::VertexBuffer);
